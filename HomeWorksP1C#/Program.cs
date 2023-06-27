@@ -3,7 +3,7 @@ using System.Reflection.Metadata.Ecma335;
 using static System.Console;
 namespace HW1 
 {
-    internal class Program 
+    class Program 
     {
         static string Choice()          // The method for selecting tasks.
         {
