@@ -11,9 +11,10 @@ namespace HW1
                     $"2. Interest calculation.\n" +
                     $"3. A String of digits.\n" +
                     $"4. Shifting.\n" +
+                    $"5. Seasons.\n" +
                     $"If You want to quit the program press Q!");
-            string answer = ReadLine();  
-            switch (answer.ToLower()) 
+            string? answer = ReadLine();  
+            switch (answer?.ToLower()) 
             {
                 case "q":
                     break;
@@ -29,6 +30,9 @@ namespace HW1
                 case "4":
                     Task4();
                     break;
+                case "5":
+                    Task5();
+                    break;
                 default:
                     WriteLine("Wrong input or there no such task! Try again!"); 
                     return Choice();
@@ -42,7 +46,7 @@ namespace HW1
         static string Task1() 
         {
             WriteLine("Enter any integer digit between 1 and 100 inclusive: ");
-            string number = ReadLine();
+            string? number = ReadLine();
             if (int.TryParse(number, out int digit)) // Check digit.
             {
                 if ((digit % 3) == 0 && (digit % 5 == 0)) // Solution
@@ -73,8 +77,8 @@ namespace HW1
                 return Task1();
             }
             WriteLine("If You want to repeat press Y, to quit the task press any key!");
-            string answer = ReadLine();
-            if (answer.ToLower() == "y")   // Condition for selection
+            string? answer = ReadLine();
+            if (answer?.ToLower() == "y")   // Condition for selection
             {
                 return Task1();
             }
@@ -87,9 +91,9 @@ namespace HW1
         {
             Write("Enter two numbers. The first number is the value, the second is the percentage.\n" +
                 "Enter the first number: ");
-            string number = ReadLine();
+            string? number = ReadLine();
             Write("Enter the percentage: ");
-            string percentage = ReadLine();
+            string? percentage = ReadLine();
             if (double.TryParse(number, out double num) &&
                 double.TryParse(percentage, out double perc)) // Check digit.
             {
@@ -108,8 +112,8 @@ namespace HW1
             }
 
             WriteLine("If You want to repeat press Y, to quit the task press any key!");
-            string answer = ReadLine();
-            if (answer.ToLower() == "y")   // Condition for selection.
+            string? answer = ReadLine();
+            if (answer?.ToLower() == "y")   // Condition for selection.
             {
                 return Task2();
             }
@@ -121,7 +125,7 @@ namespace HW1
         static string Task3() 
         {
             WriteLine("Enter four positive integers, separated by space.");
-            string digits = ReadLine().Replace(" ", "");
+            string? digits = ReadLine().Replace(" ", "");
             int buffer = 0;
             for (int i = 0; i < digits.Length; i++) // Solution
             {
@@ -139,8 +143,8 @@ namespace HW1
             WriteLine($"The result is: {buffer}");
 
             WriteLine("If You want to repeat press Y, to quit the task press any key!");
-            string answer = ReadLine();
-            if (answer.ToLower() == "y")   // Condition for selection.
+            string? answer = ReadLine();
+            if (answer?.ToLower() == "y")   // Condition for selection.
             {
                 return Task3();
             }
@@ -152,7 +156,7 @@ namespace HW1
         static string Task4() 
         {
             WriteLine("Enter six integers, separated by space:");
-            string num = ReadLine();
+            string? num = ReadLine();
             string[] numbers = num.Split(' '); // Separation by space.
             if (numbers.Length == 6 && int.TryParse(numbers[0], out int num1) &&
                 int.TryParse(numbers[1], out int num2) && int.TryParse(numbers[2], out int num3) &&
@@ -160,7 +164,7 @@ namespace HW1
                 int.TryParse(numbers[5], out int num6)) // Test for six integers.
             {
                 WriteLine("Enter positions of digits to swap, separated be space: ");
-                string posIn = ReadLine();
+                string? posIn = ReadLine();
                 string[] positions = posIn.Split(' '); // Separation by space.
                 if (positions.Length == 2 && int.TryParse(positions[0], out int pos1) &&
                     int.TryParse(positions[1], out int pos2)) // Test for 2 integer positions.
@@ -193,8 +197,8 @@ namespace HW1
             }
 
             WriteLine("If You want to repeat press Y, to quit the task press any key!");
-            string answer = ReadLine();
-            if (answer.ToLower() == "y")   // Condition for selection.
+            string? answer = ReadLine();
+            if (answer?.ToLower() == "y")   // Condition for selection.
             {
                 return Task4();
             }
@@ -203,6 +207,43 @@ namespace HW1
                 return Choice();
             }
         }
+        static string Task5() 
+        {
+            WriteLine("Enter a date in the format DD.MM.YYYY: ");
+            string? userInputDate = ReadLine();
+            if (DateTime.TryParse(userInputDate, out DateTime date)) 
+            {
+                string? season;
+                if (date.Month == 12 || date.Month == 1 || date.Month == 2) season = "Winter";
+                else if (date.Month == 3 || date.Month == 4 || date.Month == 5) season = "Spring";
+                else if (date.Month == 6 || date.Month == 7 || date.Month == 8) season = "Summer";
+                else if (date.Month == 9 || date.Month == 10 || date.Month == 11) season = "Autumn";
+                else
+                {
+                    WriteLine("Error! Incorrect month input! Try again!");
+                    return Task5();
+                }
+                string week = date.DayOfWeek.ToString();
+                WriteLine($"the season is {season}, the day of the week is {week}!");
+            }
+            else
+            {
+                WriteLine("Error! Wrong date! Enter a date in format: DD.MM.YYYY! Try again!");
+                return Task5();
+            }
+
+            WriteLine("If You want to repeat press Y, to quit the task press any key!");
+            string? answer = ReadLine();
+            if (answer?.ToLower() == "y")   // Condition for selection.
+            {
+                return Task5();
+            }
+            else
+            {
+                return Choice();
+            }
+        }
+
         static void Main(string[] args) 
         {
             Choice();
