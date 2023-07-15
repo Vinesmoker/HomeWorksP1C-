@@ -6,13 +6,13 @@ internal class Program
     static char[,] board = new char[arrBoard, arrBoard];
     static int startPosRow = 0;
     static int startPosCol = 2;
-    static bool CorrectMove(int endPosRow, int endPosCol)
+    static bool CorrectMove(int endPosRow, int endPosCol)  // Checking the correctness of the move.
     {
         int row = Math.Abs(endPosRow - startPosRow);
         int col = Math.Abs(endPosCol - startPosCol);
         return (row == 2 && col == 1) || (row == 1 && col == 2);
     }
-    static void BoardPrint()
+    static void BoardPrint()  // Board output to console.
     {
         int buff = 1;
         WriteLine("  A B C D E F G H");
@@ -36,7 +36,7 @@ internal class Program
                 else board[rows, cols] = '\u2588';
             }
         }
-        board[startPosRow, startPosCol] = 'H';
+        board[startPosRow, startPosCol] = 'H'; // Put the horse on the board.
         BoardPrint();
         while (true)
         {
