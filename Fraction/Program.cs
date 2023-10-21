@@ -5,11 +5,20 @@ class Fraction
     private int integer;
     private int numerator;
     private int denominator;
-    public Fraction(int whole, int numerator, int denominator)
+    public Fraction(int integer, int numerator, int denominator)
     {
-        this.integer = whole;
+        this.integer = integer;
         this.numerator = numerator;
         this.denominator = denominator;
+    }
+    public Fraction(int numerator, int denominator) : this(0, numerator, denominator)
+    {
+    }
+    public Fraction(int whole) : this(whole, 0, 1)
+    {
+    }
+    public Fraction() : this(0, 0, 1)
+    {
     }
     public void ToImproper()
     {
@@ -120,41 +129,43 @@ class Program
     {
         do
         {
-            Fraction fract1 = new (0, 0, 1);
-            Fraction fract2 = new (0, 0, 1);
+            Fraction fract1 = new ();
+            Fraction fract2 = new ();
             Console.WriteLine("Enter the first fraction:");
             fract1.FractionInput();
             Console.Write("Enter an operation (+, -, *, /): ");
-            if (char.TryParse(Console.ReadLine(), out char operation)) { }
+            if (char.TryParse(Console.ReadLine(), out char operation))
+            {
+                Console.WriteLine("Enter the second fraction:");
+                fract2.FractionInput();
+                Fraction? result = null;
+                switch (operation)
+                {
+                    case '+':
+                        result = fract1.Add(fract2);
+                        break;
+                    case '-':
+                        result = fract1.Subtract(fract2);
+                        break;
+                    case '*':
+                        result = fract1.Multiplicat(fract2);
+                        break;
+                    case '/':
+                        result = fract1.Division(fract2);
+                        break;
+                    default:
+                        Console.WriteLine("Wrong operation");
+                        break;
+                }
+                if (result != null)
+                {
+                    Console.Write("Result: ");
+                    result.FractionOutput();
+                }
+            }
             else
             {
-                Console.WriteLine("Wrong integer.");
-            }
-            Console.WriteLine("Enter the second fraction:");
-            fract2.FractionInput();
-            Fraction? result = null;
-            switch (operation)
-            {
-                case '+':
-                    result = fract1.Add(fract2);
-                    break;
-                case '-':
-                    result = fract1.Subtract(fract2);
-                    break;
-                case '*':
-                    result = fract1.Multiplicat(fract2);
-                    break;
-                case '/':
-                    result = fract1.Division(fract2);
-                    break;
-                default:
-                    Console.WriteLine("Wrong operation");
-                    break;
-            }
-            if (result != null)
-            {
-                Console.Write("Result: ");
-                result.FractionOutput();
+                Console.WriteLine("Wrong operation.");
             }
             Console.Write("Repeat (Y/N)? ");
         } while (Console.ReadLine()?.ToLower() == "y");
