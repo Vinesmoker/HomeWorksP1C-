@@ -3,11 +3,28 @@
     private int integer;
     private int numerator;
     private int denominator;
+    public delegate Fraction FractOper(Fraction a, Fraction b);
     public Fraction(int integer, int numerator, int denominator)
     {
         this.integer = integer;
         this.numerator = numerator;
         this.denominator = denominator;
+    }
+    public void RegisterAdditionOperation(FractOper operation)
+    {
+        AddOperation = operation;
+    }
+    public void RegisterSubtractionOperation(FractOper operation)
+    {
+        SubtractOperation = operation;
+    }
+    public void RegisterMultiplicationOperation(FractOper operation)
+    {
+        MultiplicatOperation = operation;
+    }
+    public void RegisterDivisionOperation(FractOper operation)
+    {
+        DivisionOperation = operation;
     }
     public void ToImproper()
     {
@@ -42,7 +59,7 @@
             {
                 if (denominator == 0)
                 {
-                    Console.WriteLine("Denominator have to be more than 0!");
+                    Console.WriteLine("Denominator has to be more than 0!");
                 }
                 else
                 {
@@ -76,58 +93,75 @@
     }
     public Fraction Add(Fraction other)
     {
-        ToImproper();
-        other.ToImproper();
-        int num = numerator * other.denominator + other.numerator * denominator;
-        int denom = denominator * other.denominator;
-        return new Fraction(0, num, denom);
-    }
-    public static Fraction Add(Fraction fract1, Fraction frackt2) 
-    {
-        return fract1.Add(frackt2);
+        if (AddOperation != null)
+        {
+            return AddOperation(this, other);
+        }
+        else
+        {
+            ToImproper();
+            other.ToImproper();
+            int num = numerator * other.denominator + other.numerator * denominator;
+            int denom = denominator * other.denominator;
+            return new Fraction(0, num, denom);
+        }
     }
     public Fraction Subtract(Fraction other)
     {
-        ToImproper();
-        other.ToImproper();
-        int num = numerator * other.denominator - other.numerator * denominator;
-        int denom = denominator * other.denominator;
-        return new Fraction(0, num, denom);
-    }
-    public static Fraction Subtract(Fraction fract1, Fraction fract2)
-    {
-        return fract1.Subtract(fract2);
+        if (SubtractOperation != null)
+        {
+            return SubtractOperation(this, other);
+        }
+        else
+        {
+            ToImproper();
+            other.ToImproper();
+            int num = numerator * other.denominator - other.numerator * denominator;
+            int denom = denominator * other.denominator;
+            return new Fraction(0, num, denom);
+        }
     }
     public Fraction Multiplicat(Fraction other)
     {
-        ToImproper();
-        other.ToImproper();
-        int num = numerator * other.numerator;
-        int denom = denominator * other.denominator;
-        return new Fraction(0, num, denom);
-    }
-    public static Fraction Multiplicat(Fraction fract1, Fraction fract2)
-    {
-        return fract1.Multiplicat(fract2);
+        if (MultiplicatOperation != null)
+        {
+            return MultiplicatOperation(this, other);
+        }
+        else
+        {
+            ToImproper();
+            other.ToImproper();
+            int num = numerator * other.numerator;
+            int denom = denominator * other.denominator;
+            return new Fraction(0, num, denom);
+        }
     }
     public Fraction Division(Fraction other)
     {
-        ToImproper();
-        other.ToImproper();
-        if (other.numerator == 0)
+        if (DivisionOperation != null)
         {
-            Console.WriteLine("Devision by 0 is not allowed!");
-            return new Fraction(0, 0, 1);
+            return DivisionOperation(this, other);
         }
-        int num = numerator * other.denominator;
-        int denom = denominator * other.numerator;
-        return new Fraction(0, num, denom);
+        else
+        {
+            ToImproper();
+            other.ToImproper();
+            if (other.numerator == 0)
+            {
+                Console.WriteLine("Division by 0 is not allowed!");
+                return new Fraction(0, 0, 1);
+            }
+            int num = numerator * other.denominator;
+            int denom = denominator * other.numerator;
+            return new Fraction(0, num, denom);
+        }
     }
-    public static Fraction Division(Fraction fract1, Fraction fract2)
-    {
-        return fract1.Division(fract2);
-    }
+    private FractOper? AddOperation { get; set; }
+    private FractOper? SubtractOperation { get; set; }
+    private FractOper? MultiplicatOperation { get; set; }
+    private FractOper? DivisionOperation { get; set; }
 }
+
 class Program
 {
     static void Main()
