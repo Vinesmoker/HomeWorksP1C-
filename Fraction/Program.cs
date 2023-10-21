@@ -5,9 +5,9 @@ class Fraction
     private int integer;
     private int numerator;
     private int denominator;
-    public Fraction(int whole, int numerator, int denominator)
+    public Fraction(int integer, int numerator, int denominator)
     {
-        this.integer = whole;
+        this.integer = integer;
         this.numerator = numerator;
         this.denominator = denominator;
     }
@@ -84,6 +84,10 @@ class Fraction
         int denom = denominator * other.denominator;
         return new Fraction(0, num, denom);
     }
+    public static Fraction Add(Fraction fract1, Fraction frackt2) 
+    {
+        return fract1.Add(frackt2);
+    }
     public Fraction Subtract(Fraction other)
     {
         ToImproper();
@@ -92,6 +96,10 @@ class Fraction
         int denom = denominator * other.denominator;
         return new Fraction(0, num, denom);
     }
+    public static Fraction Subtract(Fraction fract1, Fraction fract2)
+    {
+        return fract1.Subtract(fract2);
+    }
     public Fraction Multiplicat(Fraction other)
     {
         ToImproper();
@@ -99,6 +107,10 @@ class Fraction
         int num = numerator * other.numerator;
         int denom = denominator * other.denominator;
         return new Fraction(0, num, denom);
+    }
+    public static Fraction Multiplicat(Fraction fract1, Fraction fract2)
+    {
+        return fract1.Multiplicat(fract2);
     }
     public Fraction Division(Fraction other)
     {
@@ -112,6 +124,10 @@ class Fraction
         int num = numerator * other.denominator;
         int denom = denominator * other.numerator;
         return new Fraction(0, num, denom);
+    }
+    public static Fraction Division(Fraction fract1, Fraction fract2)
+    {
+        return fract1.Division(fract2);
     }
 }
 class Program
