@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HW3", "HW3\HW3.csproj", "{2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HW4", "HW4\HW4.csproj", "{C9E85A61-C5DE-4665-97E1-14F0EFB26E50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fraction", "Fraction\Fraction.csproj", "{DB5D338B-EDA5-40E4-95CF-73B118108B84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fraction", "Fraction\Fraction.csproj", "{DB5D338B-EDA5-40E4-95CF-73B118108B84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW21.07.2023", "HW21.07.2023\HW21.07.2023.csproj", "{965DA3F6-5156-400F-BC67-2006C942FC57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DB5D338B-EDA5-40E4-95CF-73B118108B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB5D338B-EDA5-40E4-95CF-73B118108B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB5D338B-EDA5-40E4-95CF-73B118108B84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{965DA3F6-5156-400F-BC67-2006C942FC57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{965DA3F6-5156-400F-BC67-2006C942FC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{965DA3F6-5156-400F-BC67-2006C942FC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{965DA3F6-5156-400F-BC67-2006C942FC57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
