@@ -3,11 +3,22 @@
     private int integer;
     private int numerator;
     private int denominator;
+    public delegate Fraction FactOper(Fraction a, Fraction b);
+
+    public FactOper? AddOper { get; set; }
+    public FactOper? SubtractOper { get; set; }
+    public FactOper? MultiplicatOper { get; set; }
+    public FactOper? DivisionOper { get; set; }
     public Fraction(int integer, int numerator, int denominator)
     {
         this.integer = integer;
         this.numerator = numerator;
         this.denominator = denominator;
+
+        AddOper = (a, b) => a.Add(b);
+        SubtractOper = (a, b) => a.Subtract(b);
+        MultiplicatOper = (a, b) => a.Multiplicat(b);
+        DivisionOper = (a, b) => a.Division(b);
     }
     public void ToImproper()
     {
@@ -126,6 +137,10 @@
     public static Fraction Division(Fraction fract1, Fraction fract2)
     {
         return fract1.Division(fract2);
+    }
+    public Fraction PerfOper(Fraction other, FactOper operation)
+    {
+        return operation(this, other);
     }
 }
 class Program
