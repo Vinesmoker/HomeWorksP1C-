@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fraction", "Fraction\Fracti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW21.07.2023", "HW21.07.2023\HW21.07.2023.csproj", "{965DA3F6-5156-400F-BC67-2006C942FC57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW21.07.2023Task2", "HW21.07.2023Task2\HW21.07.2023Task2.csproj", "{C51E057C-811A-4CD4-92DC-0AE8D6EDAC72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{965DA3F6-5156-400F-BC67-2006C942FC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{965DA3F6-5156-400F-BC67-2006C942FC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{965DA3F6-5156-400F-BC67-2006C942FC57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C51E057C-811A-4CD4-92DC-0AE8D6EDAC72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C51E057C-811A-4CD4-92DC-0AE8D6EDAC72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C51E057C-811A-4CD4-92DC-0AE8D6EDAC72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C51E057C-811A-4CD4-92DC-0AE8D6EDAC72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
