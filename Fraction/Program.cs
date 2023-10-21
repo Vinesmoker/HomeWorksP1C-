@@ -1,6 +1,4 @@
-﻿using System;
-
-class Fraction
+﻿class Fraction
 {
     private int integer;
     private int numerator;
