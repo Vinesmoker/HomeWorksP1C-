@@ -10,19 +10,19 @@
         this.numerator = numerator;
         this.denominator = denominator;
     }
-    public void RegisterAdditionOperation(FractOper operation)
+    public void AddOper(FractOper operation)
     {
         AddOperation = operation;
     }
-    public void RegisterSubtractionOperation(FractOper operation)
+    public void SubtractOper(FractOper operation)
     {
         SubtractOperation = operation;
     }
-    public void RegisterMultiplicationOperation(FractOper operation)
+    public void MultiplicatOper(FractOper operation)
     {
         MultiplicatOperation = operation;
     }
-    public void RegisterDivisionOperation(FractOper operation)
+    public void DivisionOper(FractOper operation)
     {
         DivisionOperation = operation;
     }
