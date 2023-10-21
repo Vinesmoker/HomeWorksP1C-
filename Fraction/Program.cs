@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 class Fraction
 {
     private int integer;
@@ -14,7 +13,7 @@ class Fraction
     public Fraction(int numerator, int denominator) : this(0, numerator, denominator)
     {
     }
-    public Fraction(int whole) : this(whole, 0, 1)
+    public Fraction(int integer) : this(integer, 0, 1)
     {
     }
     public Fraction() : this(0, 0, 1)
@@ -75,6 +74,12 @@ class Fraction
         denominator /= gcd;
         Console.WriteLine($"{integer} {numerator}/{denominator}");
     }
+    public void Deconstruct(out int integer, out int numerator, out int denominator)
+    {
+        integer = this.integer;
+        numerator = this.numerator;
+        denominator = this.denominator;
+    }
     private static int FindGCD(int a, int b)
     {
         while (b != 0)
@@ -115,7 +120,7 @@ class Fraction
         other.ToImproper();
         if (other.numerator == 0)
         {
-            Console.WriteLine("Devision by 0 is not allowed!");
+            Console.WriteLine("Division by 0 is not allowed!");
             return new Fraction(0, 0, 1);
         }
         int num = numerator * other.denominator;
